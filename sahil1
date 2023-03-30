@@ -1,0 +1,250 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+get_ipython().system('pip install openrouteservice')
+get_ipython().system('pip install folium')
+import openrouteservice as ors
+import folium
+from openrouteservice.directions import directions
+
+# performs requests to the ORS API services
+
+# client will be used in all examples
+client = ors.Client(key='5b3ce3597851110001cf62481ea898a05c5f46328d1431f285489028')
+
+
+print("Please select between the given choices to continue")
+print("1.Intra city")
+print("2.Inter city")
+while True:
+    n=(input("Please type intercity or intracity to select one option:\n"))
+    if n=="intracity":
+        print("Selected intracity")
+        break
+    elif n=="intercity":
+        print("Selected intercity")
+        break
+    else:
+        print("invalid choice")
+        continue
+
+if n=="intercity":
+    print("places available:")
+    print("Chandigarh")
+    print("New Delhi")
+    print("Amritsar")
+    print("Shimla")
+    print("Lucknow")
+    print("Gurugram")
+    print("Dehradun")
+    print("Kolkata")
+    print("Mumbai")
+    print("Bengaluru")
+    while True:
+        l_1=input()
+        l_2=input()
+        locations = {
+                "New Delhi":(77.209,28.613),
+                "Chandigarh":(76.81,30.6386),
+                "Amritsar":(74.8723,31.6340),
+                "Shimla":(77.1734,31.1048),
+                "Lucknow":(80.9462,26.8467),
+                "Gurugram":(77.0266,28.4595),
+                "Dehradun":(78.0322,30.3165),
+                "Kolkata":(88.3639,22.5726),
+                "Mumbai":(72.8777,19.0760),
+                "Bengaluru":(77.5946,12.9716)
+        }
+        if l_1 and l_2 in locations:
+            break
+        
+        elif l_1==l_2:
+            print("you are at the same place,please enter another location")
+            print("Enter Again")
+            continue
+        elif l_1 or l_2 not in locations:
+            print("invalid input by user")
+            continue
+    map_directions = folium.Map(location=[20.59, 78.96], zoom_start=5)
+    print("Mode of transport available")
+    print("1.Bus")
+    print("2.Car")
+    while True:
+        print("Enter bus or cars to proceed further")
+        g=input("Enter mode of transportation:")
+        if g=="bus":
+            print("selected bus")
+            _cost=1.16
+            print("Cost per kilometer = Rs. 1.16")
+            _avgspd=53.4
+            print("Average speed of bus=",_avgspd,"Kmph")
+            break
+
+        elif g=="cars":
+            print("selected cars")
+            _cost=15
+            print("Cost per kilometer = Rs. 15")
+            _avgspd=50
+            print("Average speed of car =",_avgspd,"Kmph")
+            break
+        else:
+            print("invalid input by user")
+            continue
+        
+         
+        
+    
+elif n=="intracity":
+    map_directions = folium.Map(location=[30.7265, 76.7589], zoom_start=12)
+    Speed=38
+    print("locations availabe- all sectors of Chandigarh")
+    print("enter sectors in format sector_number,example-sector_1")
+    while True:
+        l_1=input()
+        l_2=input()
+        locations ={
+            "sector_1":(76.8101,30.7525),
+            "sector_2":(76.7921,30.7641),
+            "sector_3":(76.7964,30.7575),
+            "sector_4":(76.8022,30.7510),
+            "sector_4":(76.8022,30.7510),
+            "sector_5":(76.8065,30.7458),
+            "sector_6":(76.8137,30.7367),
+            "sector_7":(76.8025,30.7344),
+            "sector_8":(76.8000,30.7416),
+            "sector_9":(76.7884,30.7467),
+            "sector_11":(76.7841,30.7583),
+            "sector_12":(76.7774,30.7667),
+            "sector_14":(76.7658,30.7616),
+            "sector_15":(76.7737,30.7515),
+            "sector_16":(76.7777,30.7456),
+            "sector_17":(76.7790,30.7411),
+            "sector_18":(76.7890,30.7328),
+            "sector_19":(76.7920,30.7294),
+            "sector_20":(76.7813,30.7213),
+            "sector_21":(76.7758,30.7265),
+            "sector_22":(76.7726,30.7320),
+            "sector_23":(30.7390,76.7660),
+            "sector_24":(76.7611,30.7447),
+            "sector_25":(76.7584,30.7512),
+            "sector_26":(76.8101,30.7300),
+            "sector_27":(76.7976,30.7236),
+            "sector_28":(76.8035,30.7173),
+            "sector_29":(76.7915,30.7112),
+            "sector_30":(76.7862,30.7163),
+            "sector_31":(76.7811,30.7019),
+            "sector_32":(76.7744,30.7095),
+            "sector_33":(76.7729,30.7162),
+            "sector_34":(76.7656,30.7201),
+            "sector_35":(76.7589,30.7265),
+            "sector_36":(76.7533,30.7334),
+            "sector_37":(76.7507,30.7367),
+            "sector_38":(76.7439,30.7455),
+            "sector_40":(76.7380,30.7394),
+            "sector_39":(76.7332,30.7457),
+            "sector_40":(76.7380,30.7394),
+            "sector_41":(76.7389,30.7318),
+            "sector_42":(76.7426,30.7265),
+            "sector_43":(76.7487,30.7191),
+            "sector_44":(76.7531,30.7136),
+            "sector_45":(76.7575,30.7075),
+            "sector_46":(76.7653,30.7016),
+            "sector_47":(76.7677,30.6963),
+            "sector_48":(76.7566,30.6902),
+            "sector_49":(76.7519,30.6957),
+            "sector_50":(76.7496,30.6990),
+            "sector_51":(76.7409,30.7059),
+            "sector_52":(76.7356,30.7109),
+            "sector_53":(76.7284,30.7163),
+            "sector_54":(76.7264,30.7241),
+            "sector_55":(76.7212,30.7278),
+            "sector_56":(76.7160,30.7369),
+    }
+        if l_1 not in locations:
+            print("invalid input by user")
+            continue
+        if l_2 not in locations:
+            print("invalid input by user")
+            continue
+        if l_1==l_2:
+            print("You can't go there as you are already there")
+            continue
+        elif l_1!=l_2:
+            break
+            
+    print("Mode of transport available")
+    print("1.Buses")
+    print("2.Cars")
+    print("3.Bikes")
+    while True:
+        print("Enter buses or cars or bikes to proceed further")
+        g=input("Enter mode of transportation:")
+        if g=="cars":
+            print("selected cars")
+            _cost=15
+            print("Cost per kilometer = Rs.15")
+            _avgspd=50
+            print("Average speed of car =",_avgspd,"Kmph")
+            break
+        elif g=="bikes":
+            print("selected bikes")
+            _cost=5
+            print("Cost per kilometer: Rs.5")
+            _avgspd=16.66
+            print("Average speed of bike=",_avgspd,"Kmph")
+            break
+        else:
+            print("invalid input by user")
+            continue    
+
+coordinates=[locations[l_1],locations[l_2]]
+        
+route =client.directions(coordinates=coordinates,
+                            profile='driving-car',
+                            format='geojson')
+
+
+# add geojson to map
+folium.GeoJson(route, name='route').add_to(map_directions)
+
+# add layer control to map (allows layer to be turned on or off)
+folium.LayerControl().add_to(map_directions)
+
+# distance and duration
+a=(route['features'][0]['properties']['segments'][0]['distance']*0.000621371)
+b=(a*1.6)
+print("Distance :","{0:.2f}".format(b),"kilometers")
+c=(route['features'][0]['properties']['segments'][0]['duration']*0.000277778, 'hours\n')
+Time=b/_avgspd
+print("Average cost of travel : Rs.","{0:.2f}".format(b*_cost))
+k=int(Time)
+w=Time-k
+if Time<0.9:
+    print("Time :",int(w*60),"Minutes")
+else:
+    print("Time :",k,"Hours",int(w*60),"Minutes")
+# display map
+map_directions
+
+       
+    
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
